@@ -1,0 +1,29 @@
+.header {
+  height: 200px;
+  width: 100%;
+  background-color: var(--gray-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.header > img {
+  height: 3rem;
+  width: auto;
+}
+
+.input-row {
+  height: 3.37rem;
+  width: 46rem;
+  display: flex;
+  margin: -27px auto 0;
+}
+
+.createBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+}

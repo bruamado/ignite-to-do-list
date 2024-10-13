@@ -1,0 +1,12 @@
+.delete {
+  cursor: pointer;
+  border-radius: 5px;
+  color: var(--gray-300);
+  background-color: transparent;
+  padding: 4px;
+}
+
+.delete:hover {
+  background-color: var(--gray-400);
+  color: var(--danger);
+}
