@@ -1,0 +1,25 @@
+.task {
+  max-width: 700px;
+  display: flex;
+  margin: auto;
+  gap: 12px;
+  background-color: var(--gray-500);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.task > p {
+  flex: 1;
+  color: var(--gray-100);
+  font-size: 0.875rem;
+}
+
+.buttons {
+  align-self: flex-start;
+}
+
+@media (max-width: 736px) {
+  .task {
+    max-width: 90%;
+  }
+}

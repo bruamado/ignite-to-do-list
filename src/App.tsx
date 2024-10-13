@@ -1,16 +1,38 @@
 import './App.css'
 import rocket from "./assets/rocket.svg"
 import todo from "./assets/todo.svg"
-import plus from "./assets/plus.svg"
-import { Input } from './components/Input'
-import { Button } from './components/Button'
-import { Delete } from './components/Delete'
-import { CircleCheckbox } from './components/CircleCheckbox'
+import { TasksBoard } from './components/TasksBoard'
+import { TaskForm } from './components/TaskForm'
 import { useState } from 'react'
 
-function App() {
+export interface TaskType {
+ order: number;
+ checked: boolean;
+ value: string;
+}
 
-  const [checked, setChecked] = useState(false);
+function App() {
+  const [tasks, setTasks] = useState<TaskType[]>([]);
+
+  const onSubmit = (data: string) => {
+    const order = tasks.length;
+    const newTask = {order: order, checked: false, value: data};
+    setTasks(state => [...state, newTask]);
+  }
+
+  const handleTaskCheck = (task: TaskType) => {
+    const newTasks = tasks.map(taskN => {
+      if (task.order === taskN.order && task.value === taskN.value) return {...taskN, checked: !taskN.checked};
+      return taskN;
+    })
+    setTasks(newTasks);
+  }
+
+  const handleTaskDelete = (task: TaskType) => {
+    const newTasksWithoutDeletedOne = tasks.filter(taskN => !(taskN.order === task.order && taskN.value === task.value));
+    setTasks(newTasksWithoutDeletedOne);
+  }
+
 
   return (
     <>
@@ -20,17 +42,8 @@ function App() {
       </header>
 
       <main>
-        <div className='input-row'>
-          <Input type='text' placeholder='Adicione uma nova tarefa' />
-          <Button>
-            <span className='createBtn'>
-              {"Criar"}
-              <img src={plus} />
-            </span>
-          </Button>
-        </div>
-        <CircleCheckbox checked={checked} onClick={() => setChecked(state => !state)}/>
-        <CircleCheckbox checked={checked} onClick={() => setChecked(state => !state)}/>
+        <TaskForm onSubmit={onSubmit}/>
+        <TasksBoard tasks={tasks} handleTaskCheck={handleTaskCheck} handleTaskDelete={handleTaskDelete}/>
       </main>
     </>
   )

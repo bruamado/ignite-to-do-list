@@ -1,10 +1,7 @@
 import { Trash } from "@phosphor-icons/react"
 import styles from "./Delete.module.css"
+import { InputHTMLAttributes } from "react";
 
-interface Props {
-  onClick: () => void;
-}
-
-export const Delete = ({onClick}: Props ) => {
-  return <Trash onClick={onClick} className={styles.delete} />
+export const Delete = (props: InputHTMLAttributes<HTMLInputElement> ) => {
+  return <span {...props}><Trash className={styles.delete}/></span>
 }

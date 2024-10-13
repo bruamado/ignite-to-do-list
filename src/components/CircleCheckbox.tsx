@@ -1,12 +1,13 @@
-import { Check, Divide } from "@phosphor-icons/react"
+import { Check } from "@phosphor-icons/react"
 import styles from "./CircleCheckbox.module.css";
+import { AllHTMLAttributes, InputHTMLAttributes, ReactElement } from "react";
 
-interface CircleCheckboxProps {
+interface CircleCheckboxProps extends AllHTMLAttributes<HTMLSpanElement> {
   checked: boolean;
   onClick: () => void;
 }
 
-export const CircleCheckbox = ({checked, onClick}: CircleCheckboxProps) => {
-  if (checked) return <span onClick={onClick} className={styles.checked}><Check /></span>;
-  return <span onClick={onClick} className={styles.unchecked}></span>;
+export const CircleCheckbox = ({checked, onClick, className, ...props}: CircleCheckboxProps) => {
+  if (checked) return <span className={`${styles.checked} ${className}`} onClick={onClick} {...props}><Check /></span>;
+  return <span className={`${styles.unchecked} ${className}`} onClick={onClick} {...props}></span>;
 }

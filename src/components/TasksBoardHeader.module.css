@@ -1,0 +1,33 @@
+.taskHeader {
+  display: flex;
+  justify-content: space-between;
+  margin: 64px auto 24px;
+  max-width: 736px;
+  gap: 12px;
+}
+
+.taskHeader > span {
+  display: flex;
+  gap: 8px;
+}
+
+.taskHeader .value {
+  border-radius: 999px;
+  background-color: var(--gray-400);
+  color: white;
+  padding: 2px 8px;
+}
+
+.createdTasks {
+  color: var(--blue);
+}
+
+.completedTasks {
+  color: var(--purple);
+}
+
+@media (max-width: 736px) {
+  .taskHeader {
+    max-width: 90%;
+  }
+}
