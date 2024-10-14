@@ -1,6 +1,6 @@
 import { Check } from "@phosphor-icons/react"
 import styles from "./CircleCheckbox.module.css";
-import { AllHTMLAttributes, InputHTMLAttributes, ReactElement } from "react";
+import { AllHTMLAttributes } from "react";
 
 interface CircleCheckboxProps extends AllHTMLAttributes<HTMLSpanElement> {
   checked: boolean;
